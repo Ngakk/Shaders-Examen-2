@@ -8,7 +8,7 @@ Material:
   m_PrefabInternal: {fileID: 0}
   m_Name: examenMaterial
   m_Shader: {fileID: 4800000, guid: d94215280d6ffdf4fa0d50fcebc2fe92, type: 3}
-  m_ShaderKeywords: 
+  m_ShaderKeywords: _RIMLIGHT_ON
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -19,7 +19,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _PositionMap:
-        m_Texture: {fileID: 2800000, guid: 1743c60260f3675489a595b03a9531ae, type: 3}
+        m_Texture: {fileID: 2800000, guid: 28c7aad1372ff114b90d330f8a2dd938, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _RefraccionMap:
@@ -27,11 +27,11 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _TransicionDiffuse:
-        m_Texture: {fileID: 2800000, guid: b66bceaf0cc0ace4e9bdc92f14bba709, type: 3}
-        m_Scale: {x: 1, y: 1}
+        m_Texture: {fileID: 2800000, guid: dd061d830233e1148bd5a6a3114e1fdc, type: 3}
+        m_Scale: {x: 5, y: 5}
         m_Offset: {x: 0, y: 0}
     - _TransicionNormalMap:
-        m_Texture: {fileID: 2800000, guid: bbab0a6f7bae9cf42bf057d8ee2755f6, type: 3}
+        m_Texture: {fileID: 2800000, guid: 8fc276bac0dd42d45b56f9de5cf70f0b, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _VisibleDiffuse:
@@ -43,18 +43,18 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - _Fresnel: 0
-    - _RefraccionIntensity: 0.3
+    - _Fresnel: 3.17
+    - _RefraccionIntensity: 0.069
+    - _Rimlight: 1
     - _SpecularIntensity: 0.9414563
     - _SpecularPower: 3.244744
     - _TransicionNormalIntensity: 0
-    - _TransicionUSpeed: 1
-    - _TransicionVSpeed: 0
-    - _TransitionHeight: 0
-    - _TransitionWidth: 0.6
+    - _TransicionUSpeed: 0.033
+    - _TransicionVSpeed: 0.012
+    - _TransitionHeight: 1
+    - _TransitionWidth: 0.251
     - _VisibleNormalIntensity: 0.4583328
     m_Colors:
-    - _AmbientColor: {r: 0.1890353, g: 0.1921745, b: 0.2264151, a: 1}
-    - _RefraccionColor: {r: 1, g: 1, b: 1, a: 1}
+    - _RefraccionColor: {r: 0.80740476, g: 0.81244355, b: 0.9056604, a: 1}
     - _SpecularColor: {r: 1, g: 1, b: 1, a: 1}
     - _TransicionColor: {r: 0.1245995, g: 0.1812556, b: 0.754717, a: 1}
