@@ -147,8 +147,7 @@ Shader "Shader Forge/examen2" {
                 float2 node_3094 = B_UVs;
                 float4 _TransicionDiffuse_var = tex2D(_TransicionDiffuse,TRANSFORM_TEX(node_3094, _TransicionDiffuse));
                 float3 B_Data = (_TransicionDiffuse_var.rgb*_TransicionColor.rgb);
-                float3 node_9616 = lerp(float3(0,0,0),B_Data,WidthGradient);
-                float3 emissive = node_9616;
+                float3 emissive = lerp(float3(0,0,0),B_Data,WidthGradient);
                 float4 _RefraccionMap_var = tex2D(_RefraccionMap,TRANSFORM_TEX(float2((sceneUVs.x * 2 - 1)*(_ScreenParams.r/_ScreenParams.g), sceneUVs.y * 2 - 1).rg, _RefraccionMap));
                 float node_8635 = pow(1.0-max(0,dot(normalDirection, viewDirection)),exp(_Fresnel));
                 float3 R_Data = lerp((_RefraccionColor.rgb*tex2D( _GrabTexture, ((_RefraccionMap_var.r*_RefraccionIntensity)+sceneUVs.rg)).rgb),tex2D( _GrabTexture, sceneUVs.rg).rgb,node_8635);
@@ -160,14 +159,12 @@ Shader "Shader Forge/examen2" {
                 float HeightAB = lerp((node_5502_if_leA*1.0)+(node_5502_if_leB*node_7817),node_7817,node_5502_if_leA*node_5502_if_leB);
                 float3 node_3525 = lerp(lerp(R_Data,V_Diffuse,HeightAB),B_Data,WidthGradient);
                 float3 F_DiffuseData = node_3525;
-                float3 node_1809 = F_DiffuseData;
                 float3 node_6504 = float3(0,0,0);
                 float node_1464 = (max(0,dot(lightDirection,normalDirection))*attenuation);
                 float ShadowData = node_1464;
                 float3 SpecularData = ((pow(max(0,dot(normalDirection,halfDirection)),exp(_SpecularPower))*_SpecularIntensity*_SpecularColor.rgb)*ShadowData);
-                float3 node_3701 = SpecularData;
                 float FresnelData = node_8635;
-                float3 finalColor = emissive + (node_1809+lerp(lerp(node_6504,node_3701,HeightAB),node_6504,WidthGradient)+lerp( 0.0, FresnelData, _Rimlight ));
+                float3 finalColor = emissive + (F_DiffuseData+lerp(lerp(node_6504,SpecularData,HeightAB),node_6504,WidthGradient)+lerp( 0.0, FresnelData, _Rimlight ));
                 return fixed4(finalColor,1);
             }
             ENDCG
@@ -299,14 +296,12 @@ Shader "Shader Forge/examen2" {
                 float3 B_Data = (_TransicionDiffuse_var.rgb*_TransicionColor.rgb);
                 float3 node_3525 = lerp(lerp(R_Data,V_Diffuse,HeightAB),B_Data,WidthGradient);
                 float3 F_DiffuseData = node_3525;
-                float3 node_1809 = F_DiffuseData;
                 float3 node_6504 = float3(0,0,0);
                 float node_1464 = (max(0,dot(lightDirection,normalDirection))*attenuation);
                 float ShadowData = node_1464;
                 float3 SpecularData = ((pow(max(0,dot(normalDirection,halfDirection)),exp(_SpecularPower))*_SpecularIntensity*_SpecularColor.rgb)*ShadowData);
-                float3 node_3701 = SpecularData;
                 float FresnelData = node_8635;
-                float3 finalColor = (node_1809+lerp(lerp(node_6504,node_3701,HeightAB),node_6504,WidthGradient)+lerp( 0.0, FresnelData, _Rimlight ));
+                float3 finalColor = (F_DiffuseData+lerp(lerp(node_6504,SpecularData,HeightAB),node_6504,WidthGradient)+lerp( 0.0, FresnelData, _Rimlight ));
                 return fixed4(finalColor * 1,0);
             }
             ENDCG
